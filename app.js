@@ -1,18 +1,16 @@
-import express from 'express'
-
+import express from "express";
 const app = express();
 
 //Cargar rutas
+import userRoutes from "./routes/user.js";
+import clienteRoutes from "./routes/cliente.js";
 
 //Middlewares
-app.use( express.urlencoded({extended: false}))
-app.use(express.json())
+app.use(express.urlencoded({ extended: false }));
+app.use(express.json());
 
-app.get('/', (req, res) => {
-    res.status(200);
-    res.send({
-        message: 'Server with express'
-    })
-})
+//Rutas
+app.use("/api/users", userRoutes);
+app.use("/api/clientes", clienteRoutes);
 
 export default app;
